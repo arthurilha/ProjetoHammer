@@ -4,34 +4,44 @@
   
       <h3 class="fontes p-3">Sing Up</h3>
         <div >
-          <input class="form-control mb-3"
+          <input [(ngModel)]="requestCadastro.email"
+                 class="form-control mb-3"
                  type="email"
                  alt="Email"  
                  placeholder="Email*"
+                 name="email"
           >
 
-          <input class="form-control mb-3" 
+          <input [(ngModel)]="requestCadastro.nome"
+                 class="form-control mb-3" 
                  type="text"
                  alt="Fullname"  
                  placeholder="Full name*" 
+                 name="nome"
           >
 
-          <input class="form-control mb-3" 
+          <input [(ngModel)]="requestCadastro.endereco"
+                 class="form-control mb-3" 
                  type="text"
                  alt="Address"  
                  placeholder="Your addres" 
+                 name="endereco"
           >
 
-          <input class="form-control mb-3" 
+          <input [(ngModel)]="requestCadastro.telefone"
+                 class="form-control mb-3" 
                  type="text"
                  alt="Phone"  
                  placeholder="Your phone" 
+                 name="telefone"
           >
 
-          <input class="form-control mb-3" 
+          <input [(ngModel)]="requestCadastro.senha"
+                 class="form-control mb-3" 
                  type="password" 
                  alt="Password" 
                  placeholder="Password*" 
+                 name="senha"
           >
           <input class="form-control mb-3" 
                  type="password" 
@@ -39,7 +49,11 @@
                  placeholder="Your password*" 
           >
 
-          <button class="btn btn-primary w-100 " type="button" >Entrar</button>
+          <button class="btn btn-primary w-100 " 
+                  type="button" 
+                  (click)="doCadastro()">
+                  Enter
+          </button>
         
         </div>
 

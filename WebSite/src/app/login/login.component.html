@@ -4,20 +4,25 @@
   
       <h3 class="fontes p-3">Login</h3>
         <div>
-          <input class="form-control mb-3"
+          <input [(ngModel)]="requestLogin.email"         
+                 class="form-control mb-3"
                  type="email"
                  alt="Email" 
                  placeholder="Email*"
+                 name="email"
           >
 
-          <input class="form-control mb-3" 
-                type="password" 
-                alt="Password"
-                placeholder="Password*" 
+          <input [(ngModel)]="requestLogin.senha"  
+                 class="form-control mb-3" 
+                 type="password" 
+                 alt="Password"
+                 placeholder="Password*" 
+                 name="senha"
           >
           
           <button class="btn btn-primary w-100 " 
-                  type="button">
+                  type="button"
+                  (click)="doLogin()">
                   Entrar
           </button>
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestLogin } from '../resources/models/RequestLogin';
+import { LoginService } from '../resources/service/login.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,11 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public requestLogin: RequestLogin;
+   
+  constructor(private loginService : LoginService) { }
 
   ngOnInit(): void {
+  this.requestLogin = new RequestLogin();
   }
 
-   
+  public doLogin(): void{
+    this.loginService.doLogin(this.requestLogin).subscribe(data =>{
+        console.log(data)
+    },
+    error =>{
+      console.error(error)
+    })
+  }
   
 }
+
+
+//http://localhost:300/api/v1
+
+
