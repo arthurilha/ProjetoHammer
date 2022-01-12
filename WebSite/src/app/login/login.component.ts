@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { RequestLogin } from '../resources/models/RequestLogin';
 import { LoginService } from '../resources/service/login.service';
 
@@ -12,24 +13,24 @@ export class LoginComponent implements OnInit {
 
   public requestLogin: RequestLogin;
    
-  constructor(private loginService : LoginService) { }
+  constructor(private loginService : LoginService, private toastr: ToastrService ) { }
 
   ngOnInit(): void {
   this.requestLogin = new RequestLogin();
   }
 
   public doLogin(): void{
-    this.loginService.doLogin(this.requestLogin).subscribe(data =>{
-        console.log(data)
+    this.loginService.doLogin(this.requestLogin).subscribe(success =>{
+        console.log(this.toastr.success("login realizado"))
+        
     },
     error =>{
-      console.error(error)
+      this.toastr.error(error.error.message);   
     })
   }
   
 }
 
 
-//http://localhost:300/api/v1
 
 

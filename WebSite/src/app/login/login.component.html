@@ -10,7 +10,16 @@
                  alt="Email" 
                  placeholder="Email*"
                  name="email"
+                 required
+                 ngModel=""
+                 #inputEmail="ngModel"
           >
+
+          <small *ngIf="inputEmail.valid" 
+          class="form-text text-sucess"></small>
+          <small *ngIf="!inputEmail.valid  && inputEmail.touched" 
+           class="form-text text-danger">Preencha o campo</small>
+
 
           <input [(ngModel)]="requestLogin.senha"  
                  class="form-control mb-3" 
@@ -18,8 +27,15 @@
                  alt="Password"
                  placeholder="Password*" 
                  name="senha"
+                 required
+                 #inputSenha="ngModel"
+                 ngModel=""
           >
-          
+          <small *ngIf="inputSenha.valid && inputSenha.touched" 
+          class="form-text text-sucess"></small>
+          <small *ngIf="!inputSenha.valid && inputSenha.touched" 
+          class="form-text text-danger">Preencha o camp</small>
+
           <button class="btn btn-primary w-100 " 
                   type="button"
                   (click)="doLogin()">
@@ -30,7 +46,7 @@
 
         <div class="text-center mt-3">
         
-          <a class="text-primary">Register account</a>
+          <a routerLink="" class="text-primary">Register account</a>
         
         </div>
         

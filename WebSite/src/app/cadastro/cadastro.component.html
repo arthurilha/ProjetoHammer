@@ -4,13 +4,20 @@
   
       <h3 class="fontes p-3">Sing Up</h3>
         <div >
-          <input [(ngModel)]="requestCadastro.email"
+          <input [(ngModel)]="requestCadastro.email" 
                  class="form-control mb-3"
                  type="email"
                  alt="Email"  
                  placeholder="Email*"
                  name="email"
+                 required
+                 ngModel=""
+                 #inputEmail="ngModel"
           >
+          <small *ngIf="inputEmail.valid" 
+                 class="form-text text-sucess"></small>
+          <small *ngIf="!inputEmail.valid  && inputEmail.touched" 
+                  class="form-text text-danger">Preencha o campo</small>
 
           <input [(ngModel)]="requestCadastro.nome"
                  class="form-control mb-3" 
@@ -18,7 +25,18 @@
                  alt="Fullname"  
                  placeholder="Full name*" 
                  name="nome"
+                 required
+                 minlength="6"
+                 ngModel=""
+                 #inputName="ngModel"
           >
+
+
+          <small *ngIf="inputName.valid" 
+                 class="form-text text-sucess"></small>
+          <small *ngIf="!inputName.valid  && inputName.touched" 
+                  class="form-text text-danger">Preencha o campo</small>
+
 
           <input [(ngModel)]="requestCadastro.endereco"
                  class="form-control mb-3" 
@@ -42,12 +60,31 @@
                  alt="Password" 
                  placeholder="Password*" 
                  name="senha"
+                 minlength="8"
+                 required
+                 #inputSenha="ngModel"
+                 ngModel=""
           >
+
+          <small *ngIf="inputSenha.valid && inputSenha.touched" 
+                 class="form-text text-sucess"></small>
+          <small *ngIf="!inputSenha.valid && inputSenha.touched" 
+                 class="form-text text-danger">Preencha o camp</small>
+
           <input class="form-control mb-3" 
                  type="password" 
                  alt="Password" 
                  placeholder="Your password*" 
+                 name="senhaTwo"
+                 minlength="8"
+                 required
+                 #inputSenhat="ngModel"
+                 ngModel=""
           >
+          <small *ngIf="inputSenhat.valid && inputSenhat.touched" 
+          class="form-text text-sucess"></small>
+          <small *ngIf="!inputSenhat.valid && inputSenhat.touched" 
+          class="form-text text-danger">Preencha o camp</small>
 
           <button class="btn btn-primary w-100 " 
                   type="button" 
@@ -59,8 +96,8 @@
 
         <div class="text-center mt-3">
 
-          <a class="text-primary">I already have an account</a>
-
+          <a routerLink="/Login" class="text-primary">I already have an account</a>
+          
         </div>
   </form>
   
