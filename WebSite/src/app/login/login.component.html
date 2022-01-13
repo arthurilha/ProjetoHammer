@@ -3,46 +3,35 @@
   <form class="form-container p-5 bg-white rounded shadow-lg">
   
       <h3 class="fontes p-3">Login</h3>
-        <div>
-          <input [(ngModel)]="requestLogin.email"         
-                 class="form-control mb-3"
-                 type="email"
-                 alt="Email" 
-                 placeholder="Email*"
-                 name="email"
-                 required
-                 ngModel=""
-                 #inputEmail="ngModel"
-          >
 
-          <small *ngIf="inputEmail.valid" 
-          class="form-text text-sucess"></small>
-          <small *ngIf="!inputEmail.valid  && inputEmail.touched" 
-           class="form-text text-danger">Preencha o campo</small>
+      <form [formGroup]="camps" (submit)="doLogin()">
+          <div  class="form-group">
+              <input
+              formControlName="email" 
+              type="email"
+              class="form-control mb-2"
+              placeholder="E-mail*"
+              />
+          </div>
 
+          <div class="form-group">
+            <input
+              formControlName="senha"
+              type="password"
+              class="form-control"
+              placeholder="Password*"
+               />
+          </div>
+        
+          <div class="mt-2">  
+            <button class="btn btn-primary w-100 "  
+                    [disabled]="!camps.valid">
+                    Enter
+            </button>
+          </div>
+        </form>
+ 
 
-          <input [(ngModel)]="requestLogin.senha"  
-                 class="form-control mb-3" 
-                 type="password" 
-                 alt="Password"
-                 placeholder="Password*" 
-                 name="senha"
-                 required
-                 #inputSenha="ngModel"
-                 ngModel=""
-          >
-          <small *ngIf="inputSenha.valid && inputSenha.touched" 
-          class="form-text text-sucess"></small>
-          <small *ngIf="!inputSenha.valid && inputSenha.touched" 
-          class="form-text text-danger">Preencha o camp</small>
-
-          <button class="btn btn-primary w-100 " 
-                  type="button"
-                  (click)="doLogin()">
-                  Entrar
-          </button>
-
-        </div>
 
         <div class="text-center mt-3">
         

@@ -14,8 +14,8 @@ export class CadastroService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public doCadastro(requestCadastro: RequestCadastro):Observable<ResponseCadastro>{
-      return this.httpClient.post<ResponseCadastro>('http://localhost:3000/api/v1/cadastro', requestCadastro )
+  public DoCadastro(requestCadastro: RequestCadastro):Observable<ResponseCadastro>{
+      return this.httpClient.post<ResponseCadastro>('http://localhost:3000/api/v1/cadastro',requestCadastro )
    }
 } 
 

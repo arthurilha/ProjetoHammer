@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators,FormGroup } from '@angular/forms';
+import { Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { RequestLogin } from '../resources/models/RequestLogin';
 import { LoginService } from '../resources/service/login.service';
 
 
@@ -11,17 +12,24 @@ import { LoginService } from '../resources/service/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  public requestLogin: RequestLogin;
+  public camps = new FormGroup({
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    senha: new FormControl(null, [Validators.required, Validators.minLength(8)])
+    
+  });
    
-  constructor(private loginService : LoginService, private toastr: ToastrService ) { }
+  constructor(private loginService : LoginService, private toastr: ToastrService, private rota : Router ) { }
 
   ngOnInit(): void {
-  this.requestLogin = new RequestLogin();
   }
 
   public doLogin(): void{
-    this.loginService.doLogin(this.requestLogin).subscribe(success =>{
-        console.log(this.toastr.success("login realizado"))
+    
+    this.loginService.doLogin(this.camps.value).subscribe(
+      (success) =>{
+        console.log(success)
+        console.log(this.toastr.success("login realizado") )
+        this.rota.navigate(["/Tabela"])
         
     },
     error =>{

@@ -1,1 +1,36 @@
-<p>tabela works!</p>
+<nav class="navbar navbar-light bg-light"> 
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#">
+
+      <p class="align-text-top h3 text-primary">Hammer</p>
+
+    </a>
+  
+    <form class="justify-content-start">
+
+      <button class="btn btn-primary me-2" 
+              type="button">
+              Table
+      </button>
+
+      <button class="btn btn-outline-primary me-2"
+              type="button"
+              (click)="forForm()">
+              Form
+      </button>  
+
+    </form>
+
+    <form class="justify-content-end"> 
+
+      <button class="btn btn-outline-primary"
+            type="submit"
+            (click)="logout()">
+            logout
+      </button>
+
+    </form>
+
+  </div>
+</nav>

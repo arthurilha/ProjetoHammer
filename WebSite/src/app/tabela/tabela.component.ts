@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabela',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabelaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rota : Router) { }
 
   ngOnInit(): void {
   }
-
+ 
+  forForm(){
+    this.rota.navigate(["/Formulario"])
+  }
+   logout(){
+    this.rota.navigate(["/Login"])
+  }
 }

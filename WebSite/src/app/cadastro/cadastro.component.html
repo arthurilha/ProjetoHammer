@@ -3,96 +3,71 @@
   <form class="form-container p-5 bg-white rounded shadow-lg">
   
       <h3 class="fontes p-3">Sing Up</h3>
-        <div >
-          <input [(ngModel)]="requestCadastro.email" 
-                 class="form-control mb-3"
-                 type="email"
-                 alt="Email"  
-                 placeholder="Email*"
-                 name="email"
-                 required
-                 ngModel=""
-                 #inputEmail="ngModel"
-          >
-          <small *ngIf="inputEmail.valid" 
-                 class="form-text text-sucess"></small>
-          <small *ngIf="!inputEmail.valid  && inputEmail.touched" 
-                  class="form-text text-danger">Preencha o campo</small>
 
-          <input [(ngModel)]="requestCadastro.nome"
-                 class="form-control mb-3" 
-                 type="text"
-                 alt="Fullname"  
-                 placeholder="Full name*" 
-                 name="nome"
-                 required
-                 minlength="6"
-                 ngModel=""
-                 #inputName="ngModel"
-          >
+      <form [formGroup]="camps" (submit)="doCadastro()">
+       
+      <div  class="form-group">
+              <input
+              formControlName="email" 
+              type="email"
+              class="form-control"
+              placeholder="E-mail*"
+              />
+          </div>
 
+          <div class="form-group">
+            <input
+              formControlName="nome"
+              type="text"
+              class="form-control my-2"
+              placeholder="Fullname*"
+               />
+          </div>
 
-          <small *ngIf="inputName.valid" 
-                 class="form-text text-sucess"></small>
-          <small *ngIf="!inputName.valid  && inputName.touched" 
-                  class="form-text text-danger">Preencha o campo</small>
+          <div class="form-group">
+            <input
+              formControlName="endereco"
+              type="text"
+              class="form-control"
+              placeholder="Your address"
+               />
+          </div>
 
+          <div class="form-group">
+            <input
+              formControlName="telefone" 
+              type="text"
+              class="form-control my-2"
+              placeholder="Your phone"
+              />
+          </div>
 
-          <input [(ngModel)]="requestCadastro.endereco"
-                 class="form-control mb-3" 
-                 type="text"
-                 alt="Address"  
-                 placeholder="Your addres" 
-                 name="endereco"
-          >
+          <div class="form-group">
+            <input
+              formControlName="senha"
+              type="password"
+              class="form-control"
+              placeholder="Password*"
+               />
+          </div>
 
-          <input [(ngModel)]="requestCadastro.telefone"
-                 class="form-control mb-3" 
-                 type="text"
-                 alt="Phone"  
-                 placeholder="Your phone" 
-                 name="telefone"
-          >
+          <div class="form-group">
+            <input
+              formControlName="senhaTwo"
+              type="password"
+              class="form-control mt-2"
+              placeholder="Confirm your password*"
+              />
+          </div>
 
-          <input [(ngModel)]="requestCadastro.senha"
-                 class="form-control mb-3" 
-                 type="password" 
-                 alt="Password" 
-                 placeholder="Password*" 
-                 name="senha"
-                 minlength="8"
-                 required
-                 #inputSenha="ngModel"
-                 ngModel=""
-          >
-
-          <small *ngIf="inputSenha.valid && inputSenha.touched" 
-                 class="form-text text-sucess"></small>
-          <small *ngIf="!inputSenha.valid && inputSenha.touched" 
-                 class="form-text text-danger">Preencha o camp</small>
-
-          <input class="form-control mb-3" 
-                 type="password" 
-                 alt="Password" 
-                 placeholder="Your password*" 
-                 name="senhaTwo"
-                 minlength="8"
-                 required
-                 #inputSenhat="ngModel"
-                 ngModel=""
-          >
-          <small *ngIf="inputSenhat.valid && inputSenhat.touched" 
-          class="form-text text-sucess"></small>
-          <small *ngIf="!inputSenhat.valid && inputSenhat.touched" 
-          class="form-text text-danger">Preencha o camp</small>
-
-          <button class="btn btn-primary w-100 " 
-                  type="button" 
-                  (click)="doCadastro()">
+          <div class="mt-2"> 
+                 
+          <button class="btn btn-primary w-100 "  
+                  [disabled]="!camps.valid">
                   Enter
           </button>
-        
         </div>
+       </form>
 
         <div class="text-center mt-3">
 
