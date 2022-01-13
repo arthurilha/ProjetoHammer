@@ -4,16 +4,18 @@ import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { TabelaComponent } from './tabela/tabela.component';
 import { FormularioComponent } from './formulario/formulario.component';
+import { RotaGuard } from './resources/service/rotaguard.service';
 
 const routes: Routes = [
-  {path:'', component: CadastroComponent},
   {path:'Login', component: LoginComponent},
-  {path:'Tabela', component:TabelaComponent},
-  {path:'Formulario', component: FormularioComponent},
+  {path:'Cadastro', component: CadastroComponent},
+  {path:'Tabela', component:TabelaComponent, canActivate:[RotaGuard]},
+  {path:'Formulario', component: FormularioComponent,canActivate:[RotaGuard]},
+  {path:'**', redirectTo: 'Login'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
