@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import {  CanActivate } from "@angular/router";
+import {  CanActivate, Router } from "@angular/router";
 import {AuthService} from './auth.service'
 
 
@@ -9,11 +9,19 @@ import {AuthService} from './auth.service'
 })
 export class RotaGuard implements CanActivate {
 
-  constructor( private auth : AuthService){}
+  constructor( private auth : AuthService, private rota: Router){}
 
 
   canActivate(): boolean {
-    return this.auth.logado()
+
+    const logado = this.auth.logado()
+
+    if(!logado){
+      this.rota.navigate(["Login"])
+    }
+    
+    return logado;
+    
   }
 
 

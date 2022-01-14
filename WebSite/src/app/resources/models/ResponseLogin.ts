@@ -1,3 +1,3 @@
-export class ResponseLogin{
-  public jwt:any;
+export interface ResponseLogin{
+   token:string;
 }

@@ -10,6 +10,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { TabelaComponent } from './tabela/tabela.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import {HttpClientModule} from '@angular/common/http'
+import { RotaGuard } from './resources/service/rotaguard.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {HttpClientModule} from '@angular/common/http'
     ReactiveFormsModule 
 
   ],
-  providers: [],
+  providers: [
+   RotaGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

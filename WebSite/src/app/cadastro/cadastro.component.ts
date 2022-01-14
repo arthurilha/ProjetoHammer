@@ -3,6 +3,7 @@ import { RequestCadastro } from '../resources/models/RequestCadastro';
 import { CadastroService } from '../resources/service/cadastro.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -21,22 +22,28 @@ export class CadastroComponent implements OnInit {
   });
 
   //cosntrutor
-  constructor(private cadastroService : CadastroService,private toastr: ToastrService) { }
+  constructor(private cadastroService : CadastroService,private toastr: ToastrService, private rota: Router) { }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   
+  }
 
-
+  
+  
   ///função
   public doCadastro(): void{
     if(this.camps.value.senha !== this.camps.value.senhaTwo){
       this.toastr.error('different passwords, please retype');
       return;
     }
+    
+    
     this.cadastroService.DoCadastro(this.camps.value).subscribe(
       (success) => {
         console.log(success)
         this.toastr.success('successful registration');
+        this.rota.navigate(["/Login"])
         
       },
       (error) => {

@@ -16,8 +16,9 @@ export class FormularioComponent implements OnInit {
   forTable(){
     this.rota.navigate(["/Tabela"])
   }
-  logout(){
-    this.rota.navigate(["/Login"])
+  logout(){  
+    localStorage.removeItem('token')
+    this.rota.navigate(['/Login'])
   }
 
 }

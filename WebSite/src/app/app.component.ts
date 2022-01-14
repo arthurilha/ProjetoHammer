@@ -9,15 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 export class AppComponent {
   title = 'WebSite';
 
-  constructor(private toast: ToastrService){
+  constructor(){
 
   }
   
-  ativar(){
-    this.toast.error("senha invalida")
-  }
-
-  desativar(){
-    this.toast.success("cadastro concluido")
-  }
 }

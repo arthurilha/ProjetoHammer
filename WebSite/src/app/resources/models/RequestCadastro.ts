@@ -1,8 +1,8 @@
-export class RequestCadastro{
+export interface RequestCadastro{
 
-  public email: string
-  public senha: string
-  public nome: string
-  public endereco: string
-  public telefone: string
+   email: string
+   senha: string
+   nome: string
+   endereco: string
+   telefone: string
 }

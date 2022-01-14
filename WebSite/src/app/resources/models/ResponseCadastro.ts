@@ -1,3 +1,3 @@
-export class ResponseCadastro{
-  public jwt:string;
+export interface ResponseCadastro{
+   token:string;
 }

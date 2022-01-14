@@ -15,7 +15,7 @@ export class LoginService {
 
   public doLogin(requestLogin: RequestLogin):Observable<ResponseLogin>{
       return this.httpClient.post<ResponseLogin>('http://localhost:3000/api/v1/login', requestLogin )
-      .pipe(tap((loginResponse=>( this.auth.loginResponse = loginResponse))))
+      
       
   }
 }

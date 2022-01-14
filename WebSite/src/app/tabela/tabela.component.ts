@@ -17,6 +17,7 @@ export class TabelaComponent implements OnInit {
     this.rota.navigate(["/Formulario"])
   }
    logout(){
-    this.rota.navigate(["/Login"])
+    localStorage.removeItem('token')
+    this.rota.navigate(['/Login'])
   }
 }
