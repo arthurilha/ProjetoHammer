@@ -1,6 +1,5 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ResponseLogin } from "../models/ResponseLogin";
+
 
 
 @Injectable({
@@ -10,7 +9,7 @@ export class AuthService {
   constructor(){}
 
 
-  public logado():boolean{
+  takeToken():boolean{
     return Boolean(localStorage.getItem('token'))
   }
 

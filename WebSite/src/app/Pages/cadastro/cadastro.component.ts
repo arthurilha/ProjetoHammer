@@ -1,6 +1,6 @@
 import { Component, OnInit,} from '@angular/core';
-import { RequestCadastro } from '../resources/models/RequestCadastro';
-import { CadastroService } from '../resources/service/cadastro.service';
+import { RequestCadastro } from '../../resources/models/RequestCadastro';
+import { CadastroService } from '../../resources/service/cadastro.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';

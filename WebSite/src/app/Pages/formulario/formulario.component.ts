@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-formulario',
@@ -8,17 +8,10 @@ import { Router } from '@angular/router';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor(private rota: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  forTable(){
-    this.rota.navigate(["/Tabela"])
-  }
-  logout(){  
-    localStorage.removeItem('token')
-    this.rota.navigate(['/Login'])
-  }
 
 }

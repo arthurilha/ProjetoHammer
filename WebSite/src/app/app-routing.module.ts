@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { TabelaComponent } from './tabela/tabela.component';
-import { FormularioComponent } from './formulario/formulario.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { CadastroComponent } from './Pages/cadastro/cadastro.component';
+import { TabelaComponent } from './Pages/tabela/tabela.component';
+import { FormularioComponent } from './Pages/formulario/formulario.component';
 import { RotaGuard } from './resources/service/rotaguard.service';
 
 
@@ -20,3 +20,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+//`${enviroment.api}`
