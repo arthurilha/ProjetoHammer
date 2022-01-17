@@ -2,9 +2,8 @@
 
 
         <section class="container">
-        <div>
-        <h5 class="card-title ">Tables</h5>
-        <a href="#" 
+        <div class="card">
+        <a  
            class="btn btn-primary"
            (click)="update()">click to update</a>
         </div>
@@ -12,12 +11,12 @@
         <table class="table">
             <thead>
               <tr>
-                <th *ngFor="let colunas of coluns" scope="col">{{colunas}}</th>
+                <th *ngFor="let colunas of coluns"  scope="col">{{colunas}}</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let it of itens">
-                <td *ngFor="let colunas of coluns" scope="row">{{it[colunas]}}</td>
+                <td *ngFor="let colunas of coluns" class="text-light" style="background-color:#0d6efd" scope="row">{{it[colunas]}}</td>
               </tr>
             </tbody>
           </table>

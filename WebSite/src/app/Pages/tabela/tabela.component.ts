@@ -22,11 +22,10 @@ export class TabelaComponent implements OnInit {
 
   public update():void{
     this.table.getTable().subscribe((res) =>{
-   
-      console.log(res)
-    } )
-
+    
+      this.coluns = Object.keys(res[0]);
+      this.itens = res;
+     
+    })
   }
- 
- 
 }

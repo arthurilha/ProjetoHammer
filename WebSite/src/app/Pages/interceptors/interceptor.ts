@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpSentEvent, HttpHeaderResponse, HttpEvent, HttpProgressEvent, HttpResponse, HttpUserEvent
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError,catchError} from 'rxjs';
 
 import { AuthService } from 'src/app/resources/service/auth.service';
 
@@ -11,21 +11,27 @@ import { AuthService } from 'src/app/resources/service/auth.service';
 
 export class Interceptor implements HttpInterceptor {
 
-  
-
   constructor( private auth: AuthService ){}
  
-  
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpResponse<any> | HttpHeaderResponse | HttpProgressEvent |  HttpEvent<any>| HttpUserEvent<any>>{
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpResponse<any> | HttpHeaderResponse | HttpProgressEvent |  HttpEvent<any>| HttpUserEvent<any>> {
-   const token = this.auth.Token();
+   const get = this.auth.Token();
    let request: HttpRequest<any> = req;
-
-   if(token){
-     req = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${token}`)
+   
+   if(get){
+      req = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${get}`)
      })
    }
-  return next.handle(req)  
+  return next.handle(req) .pipe(
+    catchError(this.handleError)
+  );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    
+    // Return an observable with a user-facing error message.
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 }
