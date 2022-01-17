@@ -15,6 +15,7 @@ export class RotaGuard implements CanActivate {
   canActivate(): boolean {
 
     const pegouToken = this.auth.takeToken()
+   
 
     if(!pegouToken){
       this.rota.navigate(["Login"])

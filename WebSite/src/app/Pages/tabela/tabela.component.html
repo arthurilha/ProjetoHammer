@@ -1,6 +1,27 @@
 <app-header></app-header>
 
-<div class="card-body text-center mt-5 p-1">
-    <h5 class="card-title ">Tables</h5>
-    <a href="#" class="btn btn-primary">click to update</a>
-</div>>
+
+        <section class="container">
+        <div>
+        <h5 class="card-title ">Tables</h5>
+        <a href="#" 
+           class="btn btn-primary"
+           (click)="update()">click to update</a>
+        </div>
+        <div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th *ngFor="let colunas of coluns" scope="col">{{colunas}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let it of itens">
+                <td *ngFor="let colunas of coluns" scope="row">{{it[colunas]}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </section>
+  
+

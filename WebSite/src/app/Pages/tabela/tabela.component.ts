@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TabelaService } from 'src/app/resources/service/tabela.service';
 
 
 @Component({
@@ -8,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabelaComponent implements OnInit {
 
-  constructor() { }
+  
+  public itens: any;
+  public coluns: string[]
+
+
+  constructor(private table: TabelaService) { }
+
 
   ngOnInit(): void {
+  }
+
+  public update():void{
+    this.table.getTable().subscribe((res) =>{
+   
+      console.log(res)
+    } )
+
   }
  
  

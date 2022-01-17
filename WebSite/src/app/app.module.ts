@@ -12,6 +12,7 @@ import { FormularioComponent } from './Pages/formulario/formulario.component';
 import {HttpClientModule} from '@angular/common/http'
 import { RotaGuard } from './resources/service/rotaguard.service';
 import { HeaderComponent } from './Pages/header/header.component';
+import { httpInterceptorProviders } from './Pages/interceptors';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HeaderComponent } from './Pages/header/header.component';
 
   ],
   providers: [
-   RotaGuard
+   RotaGuard,
+   httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

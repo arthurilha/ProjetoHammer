@@ -15,8 +15,6 @@ export class LoginService {
   constructor(private httpClient: HttpClient, private auth: AuthService) { }
 
   public doLogin(requestLogin: RequestLogin):Observable<ResponseLogin>{
-      return this.httpClient.post<ResponseLogin>(`${environment.api}/Login`, requestLogin )
-      
-      
+      return this.httpClient.post<ResponseLogin>(`${environment.api}/Login`, requestLogin )    
   }
 }
