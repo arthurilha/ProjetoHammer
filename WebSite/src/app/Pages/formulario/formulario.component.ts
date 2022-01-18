@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestFormulario } from 'src/app/resources/models/RequestFormulario';
+import { FormularioService } from 'src/app/resources/service/formulario.service';
 
 
 @Component({
@@ -8,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  public campo : RequestFormulario
+ 
+  constructor(private form: FormularioService) { }
 
   ngOnInit(): void {
   }
 
-
+  public update():void{
+    this.form.getForm().subscribe((res=>{
+      this.campo = res
+    }))
+  }
 }

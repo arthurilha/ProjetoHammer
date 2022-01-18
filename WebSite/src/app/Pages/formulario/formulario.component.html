@@ -1,6 +1,16 @@
 <app-header></app-header>
 
-<div class="card-body text-center mt-5 p-1">
-  <h5 class="card-title ">Forms</h5>
-  <a href="#" class="btn btn-primary">click to update</a>
-</div>>
+
+<section class="container">
+  <div class="card">
+  <a  
+     class="btn btn-primary"
+     (click)="update()">click to update</a>
+  </div>
+  <form *ngFor=" let c off campo">
+    <div class="mb-3">
+      <label  class="form-label"></label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+  </form>
+</section>
