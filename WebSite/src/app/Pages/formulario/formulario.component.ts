@@ -45,9 +45,7 @@ export class FormularioComponent implements OnInit {
     })
     this.forms.postForm(sv).subscribe(() => {
          console.log(this.toast.success('form saved successfully'));
-          setTimeout(() => {
-          location.reload();
-        }, 500);
+          
       },
       (error) => {
         this.toast.error(error.error.message);
