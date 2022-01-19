@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { RotaGuard } from './resources/service/rotaguard.service';
 import { HeaderComponent } from './Pages/header/header.component';
 import { httpInterceptorProviders } from './Pages/interceptors';
+import { LoaderModule } from './resources/loader/loader.module';
 
 
 
@@ -33,7 +34,8 @@ import { httpInterceptorProviders } from './Pages/interceptors';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    LoaderModule,
 
   ],
   providers: [

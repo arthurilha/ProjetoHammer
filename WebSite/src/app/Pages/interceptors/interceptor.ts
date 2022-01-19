@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpSentEvent, HttpHeaderResponse, HttpEvent, HttpProgressEvent, HttpResponse, HttpUserEvent
+import { HttpInterceptor, HttpHandler, HttpRequest, HttpHeaderResponse, HttpEvent, HttpProgressEvent, HttpResponse, HttpUserEvent
 } from '@angular/common/http';
 
-import { Observable, throwError,catchError, finalize} from 'rxjs';
+import { Observable, finalize} from 'rxjs';
 
 import { AuthService } from 'src/app/resources/service/auth.service';
+import { LoaderService } from 'src/app/resources/loader/loader.service';
 
 
 /** Pass untouched request through to the next request handler. */
@@ -12,7 +13,7 @@ import { AuthService } from 'src/app/resources/service/auth.service';
 
 export class Interceptor implements HttpInterceptor {
 
-  constructor( private auth: AuthService){}
+  constructor( private auth: AuthService, private loaderService: LoaderService){}
  
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpResponse<any> | HttpHeaderResponse | HttpProgressEvent |  HttpEvent<any>| HttpUserEvent<any>>{
 
@@ -24,18 +25,18 @@ export class Interceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', `Bearer ${get}`)
      })
    }
-  
-  return next.handle(req)
+  this.loaderService.show();
+  return next.handle(req).pipe(finalize(() => this.loaderService.hide()));
   }
 
-  /* conflito com o toastrs
-  .pipe(
-    catchError(this.handleError));/
-
-  private handleError(error: HttpErrorResponse) {
-    
-    // Return an observable with a user-facing error message.
-    return throwError(
-      'Something bad happened; please try again later.');
-  }*/
 }
+/* conflito com o toastrs
+.pipe(
+  catchError(this.handleError));/
+
+private handleError(error: HttpErrorResponse) {
+  
+  // Return an observable with a user-facing error message.
+  return throwError(
+    'Something bad happened; please try again later.');
+}*/
