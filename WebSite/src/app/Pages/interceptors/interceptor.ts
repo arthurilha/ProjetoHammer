@@ -25,14 +25,17 @@ export class Interceptor implements HttpInterceptor {
      })
    }
   
-  return next.handle(req) .pipe(
-    catchError(this.handleError));
+  return next.handle(req)
   }
+
+  /* conflito com o toastrs
+  .pipe(
+    catchError(this.handleError));/
 
   private handleError(error: HttpErrorResponse) {
     
     // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
-  }
+  }*/
 }

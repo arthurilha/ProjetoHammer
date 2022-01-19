@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 
-<section class="container">
+<section class="container  mt-3">
   <div class="card border border-primary shadow-lg p-3 mb-5 bg-body rounded">
   <a  
      class="btn btn-primary"
@@ -21,6 +21,8 @@
               class="form-control text-light mb-2"
               value=""
               placeholder="Digite um texto"
+              required
+              [class.is-invalid]="form.controls[v].invalid && form.controls[v].touched"
               style="background-color:#74aafc">
 
       <input *ngIf="i.tipo === 'NUMERICO'"
@@ -29,23 +31,27 @@
               class="form-control text-light mb-2"
               placeholder="Digite um numero"
               value=""
+              required
+              [class.is-invalid]="form.controls[v].invalid && form.controls[v].touched"
               style="background-color:#74aafc">
 
-      <input *ngIf="i.tipo === 'SELECAO'"
-              class="form-control text-light mb-2"    
-              [formControl]="form.controls[v]"
-              type="text "
-              value=""
-              placeholder="Escolha uma opção"
-              style="background-color:#74aafc">
-             
+        <select *ngIf="i.tipo === 'SELECAO'"
+                 [id]="i.id" 
+                 [formControl]="form.controls[v]" 
+                 class="form-control text-light mb-2 "
+                 required
+                 [class.is-invalid]="form.controls[v].invalid && form.controls[v].touched"
+                 style="background-color:#74aafc">
+        
+         <option *ngFor="let it of i.opcoes" 
+                      [ngValue]="it"
+                      class="text-light mb-2"
+                      >
+                {{ it }}
+              </option>
+        </select>     
 
-
-        <option *ngFor="let it of i.opcoes" 
-                [ngValue]="it"
-                class="border border-primary shadow-lg mb-2 bg-body rounded">
-          {{ it }}
-        </option>
+        
       </label>
     </div>
 

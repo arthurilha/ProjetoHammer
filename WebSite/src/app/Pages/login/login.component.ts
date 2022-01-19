@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit {
     this.loginService.doLogin(this.camps.value).subscribe(
       (success) =>{
         console.log(success)
-        console.log(this.to.success("form saved successfully") )
+        console.log(this.to.success("login successfully") )
         this.auth.salveToken(success.token)
         this.rota.navigate(["/Tabela"])
         
     },
     error =>{
       console.log(error)
-      this.to.error('Invalid Login');
+      this.to.error(error.error.message);
       //error.error.message
     })
   }
