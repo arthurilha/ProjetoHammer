@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     senha: new FormControl(null, [Validators.required, Validators.minLength(8)])
   });
    
-  constructor(private loginService : LoginService, private toastr: ToastrService, private rota : Router, private auth: AuthService) { }
+  constructor(private loginService : LoginService, private to: ToastrService, private rota : Router, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -28,13 +28,15 @@ export class LoginComponent implements OnInit {
     this.loginService.doLogin(this.camps.value).subscribe(
       (success) =>{
         console.log(success)
-        console.log(this.toastr.success("login realizado") )
+        console.log(this.to.success("form saved successfully") )
         this.auth.salveToken(success.token)
         this.rota.navigate(["/Tabela"])
         
     },
     error =>{
-      this.toastr.error(error.error.message);   
+      console.log(error)
+      this.to.error('Invalid Login');
+      //error.error.message
     })
   }
   

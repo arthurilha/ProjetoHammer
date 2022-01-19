@@ -5,14 +5,14 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpSentE
 import { Observable, throwError,catchError, finalize} from 'rxjs';
 
 import { AuthService } from 'src/app/resources/service/auth.service';
-import { LoaderService } from 'src/app/loader/loader.service';
+
 
 /** Pass untouched request through to the next request handler. */
 @Injectable()
 
 export class Interceptor implements HttpInterceptor {
 
-  constructor( private auth: AuthService, private load : LoaderService){}
+  constructor( private auth: AuthService){}
  
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpResponse<any> | HttpHeaderResponse | HttpProgressEvent |  HttpEvent<any>| HttpUserEvent<any>>{
 
@@ -24,9 +24,9 @@ export class Interceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', `Bearer ${get}`)
      })
    }
-   this.load.show();
+  
   return next.handle(req) .pipe(
-    catchError(this.handleError) && finalize(()=> this.load.hide()));
+    catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

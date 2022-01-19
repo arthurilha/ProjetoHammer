@@ -2,15 +2,56 @@
 
 
 <section class="container">
-  <div class="card">
+  <div class="card border border-primary shadow-lg p-3 mb-5 bg-body rounded">
   <a  
      class="btn btn-primary"
      (click)="update()">click to update</a>
-  </div>
-  <form *ngFor=" let c off campo">
-    <div class="mb-3">
-      <label  class="form-label"></label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+  
+  <div *ngFor="let i of input;
+               let v = index"
+               class="text-primary">
+
+      <label [for]="i.id" >
+
+        <h6 style="color:#287bf7"> {{ i.titulo }}</h6>
+
+      <input *ngIf="i.tipo === 'TEXTO'"     
+              [formControl]="form.controls[v]"
+              type="text" 
+              class="form-control text-light mb-2"
+              value=""
+              placeholder="Digite um texto"
+              style="background-color:#74aafc">
+
+      <input *ngIf="i.tipo === 'NUMERICO'"
+              [formControl]="form.controls[v]"
+              type="text" 
+              class="form-control text-light mb-2"
+              placeholder="Digite um numero"
+              value=""
+              style="background-color:#74aafc">
+
+      <input *ngIf="i.tipo === 'SELECAO'"
+              class="form-control text-light mb-2"    
+              [formControl]="form.controls[v]"
+              type="text "
+              value=""
+              placeholder="Escolha uma opção"
+              style="background-color:#74aafc">
+             
+
+
+        <option *ngFor="let it of i.opcoes" 
+                [ngValue]="it"
+                class="border border-primary shadow-lg mb-2 bg-body rounded">
+          {{ it }}
+        </option>
+      </label>
     </div>
-  </form>
+
+    <button  
+     class="btn btn-primary mt-3"
+     (click)="salve()">click to salve</button>
+
+  </div>
 </section>

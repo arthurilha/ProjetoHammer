@@ -13,7 +13,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { RotaGuard } from './resources/service/rotaguard.service';
 import { HeaderComponent } from './Pages/header/header.component';
 import { httpInterceptorProviders } from './Pages/interceptors';
-import { LoaderComponent } from './loader/loader.component';
+
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { LoaderComponent } from './loader/loader.component';
     TabelaComponent,
     FormularioComponent,
     HeaderComponent,
-    LoaderComponent
+   
   ],
   imports: [
     BrowserModule,

@@ -4,20 +4,24 @@ import { environment } from 'src/environments/environment';
 import { RequestFormulario } from '../models/RequestFormulario';
 import { Observable } from 'rxjs';
 import { ResponseFormulario } from '../models/ResponseFormulario';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormularioService {
+  push(arg0: FormControl) {
+    throw new Error('Method not implemented.');
+  }
  
 
   constructor(private httpClient: HttpClient) { }
  
-  public getForm():Observable<RequestFormulario>{
-    return this.httpClient.get<RequestFormulario>(`${environment.api}/Formulario`)
+  public getForm():Observable<ResponseFormulario[]>{
+    return this.httpClient.get<ResponseFormulario[]>(`${environment.api}/Formulario`)
   }
 
-   public doForm(RequestFormulario: RequestFormulario):Observable<ResponseFormulario>{
-      return this.httpClient.post<ResponseFormulario>(`${environment.api}/Formulario`, RequestFormulario )    
+   public postForm(Response: ResponseFormulario):Observable<RequestFormulario>{
+      return this.httpClient.post<RequestFormulario>(`${environment.api}/Formulario`, Response )    
   }
 }

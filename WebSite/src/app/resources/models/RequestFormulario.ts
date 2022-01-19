@@ -1,5 +1,5 @@
 export interface RequestFormulario {
-    tipo: number
-    valor: string
-    opcoes: string[]
+    tipo: number;
+    valor: string;
+    opcoes: string[];
 }
